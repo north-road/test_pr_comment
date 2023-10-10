@@ -34,6 +34,12 @@ jobs:
       - name: 'Unzip artifact'
         run: unzip pr_number.zip
 
+      - name: Upload files to GitHub
+        uses: j178/github-s3@v1
+        with:
+          files: ./test_image.jpg
+          github-session: ${{ secrets.GH_SESSION }}
+
       - name: 'Comment on PR'
         uses: actions/github-script@v6
         with:
@@ -46,5 +52,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
-              body: body
+              body: ${{ steps.upload.outputs.links }}
             });
