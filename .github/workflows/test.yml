@@ -15,6 +15,7 @@ jobs:
           mkdir -p ./pr
           echo $PR_NUMBER > ./pr/pr_number
           echo -e "some **markdown**\n\n## Test\n\nsome test"  > ./pr/body
+          wget "https://quoramarketing.com/wp-content/uploads/2022/02/How-to-Beat-Margit-the-Fell-Omen-in-Elden-Ring.jpg" -o ./pr/test_image.jpg
       - uses: actions/upload-artifact@v3
         with:
           name: pr_number
