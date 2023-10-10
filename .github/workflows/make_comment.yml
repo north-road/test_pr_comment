@@ -35,7 +35,7 @@ jobs:
         run: unzip pr_number.zip
 
       - name: Upload files to GitHub
-        uses: j178/github-s3@v1
+        uses: j178/github-s3@master
         with:
           files: ./test_image.jpg
           github-session: ${{ secrets.GH_SESSION }}
